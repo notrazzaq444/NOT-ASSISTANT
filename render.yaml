@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: not-assistant
+    env: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: OPENAI_MODEL
+        value: gpt-4o-mini
+      - key: DB_PATH
+        value: /var/data/not.db
+      - key: CORS_ORIGINS
+        value: "*"
+      - key: ACCESS_TOKEN
+        sync: false
+    disk:
+      name: not-data
+      mountPath: /var/data
+      sizeGB: 1

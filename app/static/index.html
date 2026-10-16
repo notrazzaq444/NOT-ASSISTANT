@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="color-scheme" content="dark light" />
+<title>NOT</title>
+<link rel="icon" href="/static/favicon.svg" type="image/svg+xml" />
+<link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+<div class="app" id="app">
+
+  <!-- Sidebar -->
+  <aside class="sidebar" id="sidebar" aria-label="Conversations">
+    <div class="sidebar__top">
+      <div class="brand">
+        <span class="brand__mark" aria-hidden="true">N</span>
+        <span class="brand__name">NOT</span>
+      </div>
+      <button class="icon-btn sidebar__collapse" id="collapseBtn" title="Toggle sidebar" aria-label="Toggle sidebar">
+        <svg viewBox="0 0 24 24" width="18" height="18"><path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+
+    <button class="new-chat" id="newChatBtn">
+      <svg viewBox="0 0 24 24" width="18" height="18"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      <span>New chat</span>
+    </button>
+
+    <nav class="convos" id="convos" aria-label="Previous conversations"></nav>
+
+    <div class="sidebar__bottom">
+      <button class="side-btn" id="settingsBtn">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.9.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.9 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1A1.7 1.7 0 0 0 4.6 9a1.7 1.7 0 0 0-.3-1.9l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.9.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.9-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.9V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>
+        <span>Settings</span>
+      </button>
+      <button class="side-btn" id="clearAllBtn">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M6 6l1 14a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2l1-14"/></svg>
+        <span>Clear history</span>
+      </button>
+    </div>
+  </aside>
+
+  <!-- Main -->
+  <main class="main">
+    <header class="topbar">
+      <button class="icon-btn" id="menuBtn" title="Menu" aria-label="Open menu">
+        <svg viewBox="0 0 24 24" width="20" height="20"><path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
+      </button>
+      <div class="topbar__title" id="topbarTitle">NOT</div>
+      <div class="topbar__right">
+        <span class="status-dot" id="statusDot" title="API status"></span>
+        <div class="user-menu">
+          <button class="user-btn" id="userBtn" aria-haspopup="true" aria-expanded="false">
+            <span class="user-avatar" id="userAvatar">?</span>
+            <span class="user-name" id="userName">…</span>
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="user-dropdown" id="userDropdown" hidden>
+            <div class="user-dropdown__head">
+              <div class="user-dropdown__name" id="userDropdownName">…</div>
+              <div class="user-dropdown__role muted" id="userDropdownRole"></div>
+            </div>
+            <button class="user-dropdown__item" id="logoutBtn">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="M16 17l5-5-5-5M21 12H9"/></svg>
+              Log out
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section class="chat" id="chat" aria-live="polite">
+      <div class="welcome" id="welcome">
+        <div class="welcome__mark">N</div>
+        <h1>How can I help?</h1>
+        <p class="muted">Ask anything. Type, or use the microphone to talk.</p>
+      </div>
+    </section>
+
+    <div class="composer-wrap">
+      <form class="composer" id="composer" autocomplete="off">
+        <textarea id="input" rows="1" placeholder="Message NOT…" aria-label="Message"></textarea>
+
+        <div class="composer__actions">
+          <button type="button" class="icon-btn" id="micBtn" title="Voice input" aria-label="Voice input">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="3" width="6" height="12" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg>
+          </button>
+          <button type="button" class="icon-btn" id="stopSpeakBtn" title="Stop speaking" aria-label="Stop speaking" hidden>
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><rect x="6" y="6" width="12" height="12" rx="2"/></svg>
+          </button>
+          <button type="submit" class="send-btn" id="sendBtn" title="Send" aria-label="Send">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+          </button>
+        </div>
+      </form>
+      <div class="composer__hint" id="composerHint">
+        <span class="muted">Enter to send · Shift+Enter for a new line</span>
+      </div>
+    </div>
+  </main>
+</div>
+
+<!-- Settings drawer -->
+<div class="drawer-backdrop" id="drawerBackdrop" hidden></div>
+<aside class="drawer" id="drawer" hidden aria-label="Settings">
+  <div class="drawer__head">
+    <h2>Settings</h2>
+    <button class="icon-btn" id="closeDrawer" aria-label="Close settings">
+      <svg viewBox="0 0 24 24" width="20" height="20"><path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+
+  <div class="drawer__body">
+    <div class="field">
+      <label for="setTheme">Theme</label>
+      <select id="setTheme">
+        <option value="dark">Dark</option>
+        <option value="light">Light</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label for="setLang">Response language</label>
+      <select id="setLang">
+        <option value="auto">Auto-detect</option>
+        <option value="en">English</option>
+        <option value="ur">Urdu (اردو)</option>
+        <option value="roman-ur">Roman Urdu</option>
+        <option value="hi">Hindi (हिन्दी)</option>
+      </select>
+    </div>
+
+    <div class="field field--row">
+      <label for="setVoiceOut">Speak replies aloud</label>
+      <input type="checkbox" id="setVoiceOut" />
+    </div>
+
+    <div class="field field--row">
+      <label for="setVoiceConv">Voice conversation mode</label>
+      <input type="checkbox" id="setVoiceConv" />
+    </div>
+
+    <div class="field">
+      <label for="setRate">Speech rate: <span id="rateVal">1.0</span></label>
+      <input type="range" id="setRate" min="0.5" max="2" step="0.1" value="1" />
+    </div>
+
+    <div class="field">
+      <label for="setVoice">Voice</label>
+      <select id="setVoice"></select>
+    </div>
+
+    <div class="field">
+      <label>API status</label>
+      <div class="api-status" id="apiStatus">Checking…</div>
+    </div>
+
+    <div class="field">
+      <label for="setToken">Access token (only if server requires one)</label>
+      <input type="password" id="setToken" placeholder="optional" />
+      <small class="muted">Stored in this browser only. Never sent anywhere except this app's own API.</small>
+    </div>
+
+    <button class="danger-btn" id="drawerClearBtn">Clear all chat history</button>
+  </div>
+</aside>
+
+<!-- Confirm modal -->
+<div class="modal-backdrop" id="modalBackdrop" hidden>
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <h3 id="modalTitle">Are you sure?</h3>
+    <p id="modalBody" class="muted"></p>
+    <div class="modal__actions">
+      <button class="ghost-btn" id="modalCancel">Cancel</button>
+      <button class="danger-btn" id="modalConfirm">Confirm</button>
+    </div>
+  </div>
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast" hidden></div>
+
+<script src="/static/app.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="color-scheme" content="dark light" />
+<title>Sign in · NOT</title>
+<link rel="icon" href="/static/favicon.svg" type="image/svg+xml" />
+<link rel="stylesheet" href="/static/login.css" />
+
+<!-- Order matters: config first, then module -->
+<script src="/static/firebase-config.js"></script>
+<script type="module" src="/static/login.js"></script>
+</head>
+<body>
+<div class="auth-wrap">
+
+  <div class="auth-card">
+    <div class="brand">
+      <span class="brand__mark">N</span>
+      <span class="brand__name">NOT</span>
+    </div>
+
+    <h1 class="auth-title">Welcome to NOT</h1>
+    <p class="auth-sub muted">Sign in to continue</p>
+
+    <!-- Google -->
+    <button class="google-btn" id="googleBtn" type="button">
+      <svg width="18" height="18" viewBox="0 0 48 48" aria-hidden="true">
+        <path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3c-1.6 4.7-6 8-11.3 8-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.9 1.2 8 3.1l5.7-5.7C34.5 6.1 29.5 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.2-.1-2.3-.4-3.5z"/>
+        <path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 15.1 18.9 12 24 12c3.1 0 5.9 1.2 8 3.1l5.7-5.7C34.5 6.1 29.5 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/>
+        <path fill="#4CAF50" d="M24 44c5.4 0 10.3-2.1 14-5.4l-6.4-5.4c-2.1 1.5-4.7 2.4-7.6 2.4-5.3 0-9.7-3.3-11.3-8l-6.6 5.1C9.5 39.5 16.2 44 24 44z"/>
+        <path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.2-2.2 4.1-4 5.5l6.4 5.4C41.8 35.6 44 30.2 44 24c0-1.2-.1-2.3-.4-3.5z"/>
+      </svg>
+      <span>Continue with Google</span>
+    </button>
+
+    <div class="divider"><span>or</span></div>
+
+    <!-- Tabs -->
+    <div class="tabs" role="tablist">
+      <button class="tab active" id="tabLogin" role="tab" aria-selected="true">Sign in</button>
+      <button class="tab" id="tabSignup" role="tab" aria-selected="false">Create account</button>
+    </div>
+
+    <!-- Login form -->
+    <form id="loginForm" class="form" autocomplete="on">
+      <label class="field">
+        <span>Email</span>
+        <input type="email" id="loginEmail" name="email" autocomplete="email"
+               required placeholder="you@example.com" />
+      </label>
+      <label class="field">
+        <span>Password</span>
+        <input type="password" id="loginPassword" name="password" autocomplete="current-password"
+               required minlength="6" placeholder="••••••••" />
+      </label>
+      <div class="error" id="loginError" hidden></div>
+      <button class="primary-btn" type="submit" id="loginBtn">Sign in</button>
+      <button type="button" class="link-btn" id="forgotBtn">Forgot password?</button>
+    </form>
+
+    <!-- Signup form -->
+    <form id="signupForm" class="form" autocomplete="on" hidden>
+      <label class="field">
+        <span>Email</span>
+        <input type="email" id="signupEmail" name="email" autocomplete="email"
+               required placeholder="you@example.com" />
+      </label>
+      <label class="field">
+        <span>Password</span>
+        <input type="password" id="signupPassword" name="password" autocomplete="new-password"
+               required minlength="6" placeholder="At least 6 characters" />
+      </label>
+      <label class="field">
+        <span>Confirm password</span>
+        <input type="password" id="signupConfirm" name="confirm" autocomplete="new-password"
+               required minlength="6" placeholder="Repeat password" />
+      </label>
+      <div class="error" id="signupError" hidden></div>
+      <button class="primary-btn" type="submit" id="signupBtn">Create account</button>
+    </form>
+  </div>
+
+  <p class="footer-note muted">
+    NOT · a JARVIS-style assistant.
+  </p>
+</div>
+</body>
+</html>
